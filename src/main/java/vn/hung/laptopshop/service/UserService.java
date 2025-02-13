@@ -11,7 +11,6 @@ import vn.hung.laptopshop.repository.UserRepository;
 public class UserService {
 
     private final UserRepository userRepository;
-    
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -25,7 +24,13 @@ public class UserService {
         return this.userRepository.findByEmail(email);
     }
 
-    public User handleSaveUser (User user) {
-        return this.userRepository.save(user);
+    public User handleSaveUser(User user) {
+        User hung = this.userRepository.save(user);
+        return hung;
     }
+
+    public User findById(long id) {
+        return this.userRepository.findById(id);
+    }
+
 }
