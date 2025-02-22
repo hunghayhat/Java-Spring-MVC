@@ -21,23 +21,24 @@
                 <div id="layoutSidenav_content">
                     <main>
                         <div class="container mt-5">
-                            <div class="row">
-                                <div>
-                                    <h3>Delete user ${id}</h3>
-                                    <hr />
-                                    <h4>Do you want to delete user ${id}</h4>
-                                    <div class=" mt-3 justify-content-between">
-                                        <form:form method="post" action="/admin/user/delete" modelAttribute="newUser">
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                            <div style="display: none" class="mb-3">
-                                                <label class="form-label">ID</label>
-                                                <form:input type="text" class="form-control" path="id" />
-                                            </div>
-                                        </form:form>
-                                        <a href="/admin/user" class="btn btn-success">Back</a>
-                                    </div>
+                            <div class="col-12 mx-auto">
+                                <div class="d-flex justify-content-between">
+                                    <h3>User Detail with ID = ${id}</h3>
                                 </div>
                             </div>
+                            <hr />
+                            <div class="card" style="width: 60%;">
+                                <div class="card-header">
+                                    User Information
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Full Name: ${user.fullName}</li>
+                                    <li class="list-group-item">Email: ${user.email}</li>
+                                    <li class="list-group-item">Address: ${user.address}</li>
+                                </ul>
+
+                            </div>
+                            <a class="mt-4 btn btn-success" href="/admin/user">Back</a>
                         </div>
                     </main>
                     <jsp:include page="../layout/footer.jsp" />

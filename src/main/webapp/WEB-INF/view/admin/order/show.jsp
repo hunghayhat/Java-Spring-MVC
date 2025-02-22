@@ -20,25 +20,7 @@
                 <jsp:include page="../layout/sidebar.jsp" />
                 <div id="layoutSidenav_content">
                     <main>
-                        <div class="container mt-5">
-                            <div class="row">
-                                <div>
-                                    <h3>Delete user ${id}</h3>
-                                    <hr />
-                                    <h4>Do you want to delete user ${id}</h4>
-                                    <div class=" mt-3 justify-content-between">
-                                        <form:form method="post" action="/admin/user/delete" modelAttribute="newUser">
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                            <div style="display: none" class="mb-3">
-                                                <label class="form-label">ID</label>
-                                                <form:input type="text" class="form-control" path="id" />
-                                            </div>
-                                        </form:form>
-                                        <a href="/admin/user" class="btn btn-success">Back</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div>Order</div>
                     </main>
                     <jsp:include page="../layout/footer.jsp" />
                 </div>
