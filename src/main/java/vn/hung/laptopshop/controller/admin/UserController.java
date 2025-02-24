@@ -1,11 +1,9 @@
 package vn.hung.laptopshop.controller.admin;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-import jakarta.servlet.ServletContext;
 import vn.hung.laptopshop.domain.User;
 import vn.hung.laptopshop.service.UploadService;
 import vn.hung.laptopshop.service.UserService;
@@ -26,10 +22,12 @@ public class UserController {
 
     private final UserService userService;
     private final UploadService uploadService;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService, UploadService uploadService) {
+    public UserController(UserService userService, UploadService uploadService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.uploadService = uploadService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @RequestMapping("/")
@@ -76,7 +74,12 @@ public class UserController {
             @ModelAttribute("newUser") User hung,
             @RequestParam("userFile") MultipartFile file) {
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
-        // this.userService.handleSaveUser(hung);
+        String hashPassword = this.passwordEncoder.encode(hung.getPassword());
+
+        hung.setAvatar(avatar);
+        hung.setPassword(hashPassword);
+        hung.setRole(this.userService.getRoleByName(hung.getRole().getName()));
+        this.userService.handleSaveUser(hung);
         return "redirect:/admin/user";
     }
 
