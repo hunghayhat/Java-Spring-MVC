@@ -8,9 +8,8 @@
                 <meta charset="utf-8" />
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
-                <meta name="author" content="Hỏi Dân IT" />
-                <title>Dashboard - Hỏi Dân IT</title>
+                <meta name="description" content="Laptop shop" />
+                <title>List Users</title>
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
             </head>
@@ -36,6 +35,7 @@
                                             <th scope="col">ID</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Full Name</th>
+                                            <th scope="col">Role</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -46,6 +46,7 @@
                                                 <th>${user.id}</th>
                                                 <td>${user.email}</td>
                                                 <td>${user.fullName}</td>
+                                                <td>${user.role.name}</td>
                                                 <td>
                                                     <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
                                                     <a href="/admin/user/update/${user.id}"
