@@ -1,4 +1,3 @@
-<jsp:include page="../layout/footer.jsp" />
 <!-- Navbar start -->
 <div class="container-fluid fixed-top">
     <div class="container px-0">

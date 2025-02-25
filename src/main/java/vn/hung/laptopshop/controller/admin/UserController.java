@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import vn.hung.laptopshop.domain.User;
@@ -29,14 +28,14 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @RequestMapping("/admin/user")
+    @GetMapping("/admin/user")
     public String getUserPage(Model model) {
         List<User> users = this.userService.getAllUsers();
         model.addAttribute("users1", users);
         return "admin/user/show";
     }
 
-    @RequestMapping("/admin/user/{id}")
+    @GetMapping("/admin/user/{id}")
     public String getUserDetailPage(Model model, @PathVariable long id) {
         User user = this.userService.findById(id);
         model.addAttribute("id", id);
