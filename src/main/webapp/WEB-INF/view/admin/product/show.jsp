@@ -9,7 +9,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
             <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
             <meta name="author" content="Hỏi Dân IT" />
-            <title>Dashboard - Hỏi Dân IT</title>
+            <title>Products List</title>
             <link href="/css/styles.css" rel="stylesheet" />
             <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         </head>
@@ -20,7 +20,47 @@
                 <jsp:include page="../layout/sidebar.jsp" />
                 <div id="layoutSidenav_content">
                     <main>
-                        <div>Product</div>
+                        <div class="container mt-5">
+                            <div class="col-12 mx-auto">
+                                <div class="d-flex justify-content-between">
+                                    <h3>Products List</h3>
+                                    <a href="/admin/product/create" class="btn btn-primary">Add a product</a>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Factory</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach var="product" items="${newProducts}">
+
+                                        <tr>
+                                            <th>${product.id}</th>
+                                            <td>${product.name}</td>
+                                            <td>${product.price}</td>
+                                            <td>${product.factory}</td>
+                                            <td>
+                                                <a href="/admin/product/${product.id}" class="btn btn-success">View</a>
+                                                <a href="/admin/product/update/${product.id}"
+                                                    class="btn btn-warning">Update</a>
+                                                <a href="/admin/product/delete/${product.id}"
+                                                    class="btn btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+
+
+                                </tbody>
+                            </table>
+                        </div>
                     </main>
                     <jsp:include page="../layout/footer.jsp" />
                 </div>
