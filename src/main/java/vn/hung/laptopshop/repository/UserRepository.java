@@ -10,6 +10,7 @@ import vn.hung.laptopshop.domain.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User save(User hung);
+
     List<User> findByEmail(String email);
 
     List<User> findAll();
@@ -18,4 +19,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     void deleteById(long id);
 
-} 
+}
