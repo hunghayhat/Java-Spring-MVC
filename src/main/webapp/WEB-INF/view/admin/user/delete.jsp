@@ -27,7 +27,7 @@
                                         <h3>Delete user ${id}</h3>
                                         <hr />
                                         <h4>Do you want to delete user ${id}</h4>
-                                        <div class=" mt-3 justify-content-between">
+                                        <div class=" mt-3 d-flex">
                                             <form:form method="post" action="/admin/user/delete"
                                                 modelAttribute="newUser">
                                                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -36,7 +36,7 @@
                                                     <form:input type="text" class="form-control" path="id" />
                                                 </div>
                                             </form:form>
-                                            <a href="/admin/user" class="btn btn-success">Back</a>
+                                            <a href="/admin/user" class="btn btn-success mx-3">Back</a>
                                         </div>
                                     </div>
                                 </div>
