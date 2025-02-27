@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,19 +18,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import jakarta.validation.Valid;
 
 @Controller
 public class ProductController {
     private final UploadService uploadService;
     private final ProductService productService;
 
-    public ProductController(UploadService uploadService, ProductService productService){
+    public ProductController(UploadService uploadService, ProductService productService) {
         this.uploadService = uploadService;
         this.productService = productService;
     }
 
-    
     @GetMapping("/admin/product")
     public String getProductDashboard(Model model) {
         List<Product> products = this.productService.getAllProducts();
@@ -41,11 +42,20 @@ public class ProductController {
         model.addAttribute("newProduct", new Product());
         return "admin/product/create";
     }
-    
+
     @PostMapping("/admin/product/create")
     public String postCreateProduct(Model model,
-    @ModelAttribute("newProduct") Product laptop,
-    @RequestParam("userFile") MultipartFile file) {
+            @ModelAttribute("newProduct") @Valid Product laptop,
+            BindingResult newProductBindingResult,
+            @RequestParam("userFile") MultipartFile file) {
+        List<FieldError> errors = newProductBindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(">>>>>>>>>>>" + error.getField() + " - " + error.getDefaultMessage());
+        }
+
+        if (newProductBindingResult.hasErrors())
+            return "/admin/product/create";
+
         String productImage = this.uploadService.handleSaveUploadFile(file, "product");
         laptop.setImage(productImage);
         this.productService.handleSaveProduct(laptop);
@@ -59,7 +69,5 @@ public class ProductController {
         model.addAttribute("product", product);
         return "/admin/product/detail";
     }
-    
-    
-    
+
 }

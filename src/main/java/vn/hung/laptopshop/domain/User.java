@@ -2,6 +2,8 @@ package vn.hung.laptopshop.domain;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,9 +13,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
@@ -26,12 +26,11 @@ public class User {
     @NotEmpty(message = "Email cannot be empty")
     private String email;
 
-    @NotNull
-    @Min(value = 6, message = "Password must have at least 6 characters!")
+    @Length(min = 6, max = 99, message = "Full name must have at least 3 characters!")
     private String password;
 
-    @NotNull
-    @Min(value = 3, message = "Full name must have at least 3 characters!")
+    @NotEmpty
+    @Length(min = 3, max = 99, message = "Full name must have at least 3 characters!")
     private String fullName;
     private String address;
     private String phone;

@@ -42,12 +42,24 @@
                                             modelAttribute="newProduct" enctype="multipart/form-data">
                                             <div class="row g-3 mt-3">
                                                 <div class="col">
+                                                    <c:set var="errorName">
+                                                        <form:errors path="name" cssClass="invalid-feedback" />
+                                                    </c:set>
                                                     <label class="form-label">Name</label>
-                                                    <form:input type="input" class="form-control" path="name" />
+                                                    <form:input type="input"
+                                                        class="form-control ${not empty errorName ? 'is-invalid' : ''}"
+                                                        path="name" />
+                                                    ${errorName}
                                                 </div>
                                                 <div class="col">
+                                                    <c:set var="errorPrice">
+                                                        <form:errors path="price" cssClass="invalid-feedback" />
+                                                    </c:set>
                                                     <label class="form-label">Price</label>
-                                                    <form:input type="input" class="form-control" path="price" />
+                                                    <form:input type="input"
+                                                        class="form-control ${not empty errorPrice ? 'is-invalid' : ''}"
+                                                        path="price" />
+                                                    ${errorPrice}
                                                 </div>
                                             </div>
                                             <div class="mb-3 mt-3">
@@ -112,7 +124,7 @@
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                     crossorigin="anonymous"></script>
-                <script src="js/scripts.js"></script>
+                <script src="/js/scripts.js"></script>
 
 
             </body>
