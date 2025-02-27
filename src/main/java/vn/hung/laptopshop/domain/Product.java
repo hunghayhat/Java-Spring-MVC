@@ -21,8 +21,6 @@ public class Product {
 
     @Min(value = 0, message = "Giá tiền không thể âm!")
     private double price;
-
-    @NotEmpty(message = "Sản phẩm chưa có hình ảnh!")
     private String image;
 
     private String detailDesc;
