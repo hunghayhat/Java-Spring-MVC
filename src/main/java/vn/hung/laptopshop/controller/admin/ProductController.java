@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import vn.hung.laptopshop.domain.Product;
+import vn.hung.laptopshop.domain.User;
 import vn.hung.laptopshop.service.ProductService;
 import vn.hung.laptopshop.service.UploadService;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class ProductController {
@@ -68,6 +70,46 @@ public class ProductController {
         Product product = this.productService.findProductById(id);
         model.addAttribute("product", product);
         return "/admin/product/detail";
+    }
+
+    @GetMapping("/admin/product/update/{id}")
+    public String getUpdateProduct(Model model, @PathVariable long id) {
+        Product currentProduct = this.productService.findProductById(id);
+        model.addAttribute("currentProduct", currentProduct);
+        return "/admin/product/update";
+    }
+
+    @PostMapping("/admin/product/update")
+    public String postUpdateProduct(Model model, @ModelAttribute("currentProduct") Product laptop, MultipartFile file) {
+        Product currentProduct = this.productService.findProductById(laptop.getId());
+        model.addAttribute("currentProduct", currentProduct);
+        if (currentProduct != null) {
+            currentProduct.setName(laptop.getName());
+            currentProduct.setPrice(laptop.getPrice());
+            currentProduct.setQuantity(laptop.getQuantity());
+            currentProduct.setFactory(laptop.getFactory());
+            currentProduct.setTarget(laptop.getTarget());
+            if (file != null && !file.isEmpty()) {
+                String imagePath = this.uploadService.handleSaveUploadFile(file, "avatar");
+                currentProduct.setImage(imagePath);
+            }
+            this.productService.handleSaveProduct(currentProduct);
+        }
+        return "redirect:/admin/product";
+    }
+
+    @GetMapping("admin/product/delete/{id}")
+    public String getDeleteProductPage(Model model, @PathVariable long id) {
+        Product currentProduct = this.productService.findProductById(id);
+        model.addAttribute("currentProduct", currentProduct);
+        return "admin/product/delete";
+    }
+
+    @PostMapping("/admin/product/delete")
+    public String postDelete(Model model,
+            @ModelAttribute("currentProduct") Product laptop) {
+        this.productService.deleteById(laptop.getId());
+        return "redirect:/admin/product";
     }
 
 }

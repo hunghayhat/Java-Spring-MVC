@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -19,7 +20,8 @@ public class Product {
     @NotEmpty(message = "Chưa điền tên sản phẩm!")
     private String name;
 
-    @Min(value = 0, message = "Giá tiền không thể âm!")
+    @NotNull
+    @DecimalMin(value = "0", inclusive = false, message = "Giá tiền không thể âm!")
     private double price;
 
     @NotEmpty(message = "Sản phẩm chưa có hình ảnh!")

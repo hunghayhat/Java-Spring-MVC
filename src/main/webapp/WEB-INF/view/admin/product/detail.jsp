@@ -30,12 +30,15 @@
                                 <div class="card-header">
                                     Product Information
                                 </div>
+                                <img style="max-height: 250px; display: block;" alt="product preview"
+                                    id="productPreview">
                                 <ul class="list-group list-group-flush">
+
                                     <li class="list-group-item">Name: ${product.name}</li>
                                     <li class="list-group-item">Price: ${product.price}</li>
                                     <li class="list-group-item">Quantity: ${product.quantity}</li>
                                     <li class="list-group-item">Factory: ${product.factory}</li>
-                                    <li class="list-group-item">Address: ${product.target}</li>
+                                    <li class="list-group-item">Target: ${product.target}</li>
                                 </ul>
 
                             </div>

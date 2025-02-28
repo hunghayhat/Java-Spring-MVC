@@ -15,8 +15,8 @@
 
                 <script>
                     $(document).ready(() => {
-                        const avatarFile = $("#avatarFile");
-                        avatarFile.change(function (e) {
+                        const productFile = $("#productFile");
+                        productFile.change(function (e) {
                             const imgURL = URL.createObjectURL(e.target.files[0]);
                             $("#avatarPreview").attr("src", imgURL);
                             $("#avatarPreview").css({ "display": "block" });
@@ -105,13 +105,13 @@
                                             </div>
 
                                             <div class="col">
-                                                <label for="avatarFile" class="form-label">Image</label>
+                                                <label for="productFile" class="form-label">Image</label>
                                                 <input class="form-control" type="file" id="productFile"
                                                     accept=".png, .jpg, .jpeg" name="userFile" />
                                             </div>
-                                            <div class="col-12 mb-3">
-                                                <img style="max-height: 250px; display: none;" alt="avatar preview"
-                                                    id="avatarPreview">
+                                            <div class="col-12 mb-3 mt-3">
+                                                <img style="max-height: 250px; display: none;" alt="product preview"
+                                                    id="productPreview">
 
                                                 <button type="submit" class="btn btn-primary mt-3">Create</button>
                                         </form:form>
