@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import vn.hung.laptopshop.domain.Product;
-import vn.hung.laptopshop.domain.User;
 import vn.hung.laptopshop.service.ProductService;
 import vn.hung.laptopshop.service.UploadService;
 
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class ProductController {
@@ -86,6 +84,8 @@ public class ProductController {
         if (currentProduct != null) {
             currentProduct.setName(laptop.getName());
             currentProduct.setPrice(laptop.getPrice());
+            currentProduct.setDetailDesc(laptop.getDetailDesc());
+            currentProduct.setShortDesc(laptop.getShortDesc());
             currentProduct.setQuantity(laptop.getQuantity());
             currentProduct.setFactory(laptop.getFactory());
             currentProduct.setTarget(laptop.getTarget());

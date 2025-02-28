@@ -23,9 +23,11 @@
                             <div class="container mt-5">
                                 <div class="row">
                                     <div>
-                                        <h3>Delete user ${id}</h3>
+                                        <h3>Delete product ${id}</h3>
                                         <hr />
-                                        <h4>Do you want to delete user ${id}</h4>
+                                        <div class="alert alert-danger">
+                                            Are you sure to delete this product?
+                                        </div>
                                         <div class=" mt-3 d-flex">
                                             <form:form method="post" action="/admin/product/delete"
                                                 modelAttribute="currentProduct">

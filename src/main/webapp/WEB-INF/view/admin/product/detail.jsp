@@ -27,11 +27,11 @@
                             </div>
                             <hr />
                             <div class="card" style="width: 60%;">
+                                <img src="/images/product/${product.image}" alt="ImagePreview">
                                 <div class="card-header">
                                     Product Information
                                 </div>
-                                <img style="max-height: 250px; display: block;" alt="product preview"
-                                    id="productPreview">
+
                                 <ul class="list-group list-group-flush">
 
                                     <li class="list-group-item">Name: ${product.name}</li>
