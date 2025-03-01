@@ -90,7 +90,7 @@ public class ProductController {
             currentProduct.setFactory(laptop.getFactory());
             currentProduct.setTarget(laptop.getTarget());
             if (file != null && !file.isEmpty()) {
-                String imagePath = this.uploadService.handleSaveUploadFile(file, "avatar");
+                String imagePath = this.uploadService.handleSaveUploadFile(file, "product");
                 currentProduct.setImage(imagePath);
             }
             this.productService.handleSaveProduct(currentProduct);
