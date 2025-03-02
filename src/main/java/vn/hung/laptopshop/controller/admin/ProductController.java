@@ -78,8 +78,11 @@ public class ProductController {
     }
 
     @PostMapping("/admin/product/update")
-    public String postUpdateProduct(Model model, @ModelAttribute("currentProduct") Product laptop, MultipartFile file) {
+    public String postUpdateProduct(Model model,
+            @ModelAttribute("currentProduct") Product laptop,
+            @RequestParam("userFile") MultipartFile file) {
         Product currentProduct = this.productService.findProductById(laptop.getId());
+
         model.addAttribute("currentProduct", currentProduct);
         if (currentProduct != null) {
             currentProduct.setName(laptop.getName());
@@ -93,6 +96,7 @@ public class ProductController {
                 String imagePath = this.uploadService.handleSaveUploadFile(file, "product");
                 currentProduct.setImage(imagePath);
             }
+
             this.productService.handleSaveProduct(currentProduct);
         }
         return "redirect:/admin/product";

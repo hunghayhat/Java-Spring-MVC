@@ -3,11 +3,11 @@
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">
                 <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Hỏi Dân IT 2024</div>
+                    <div class="text-muted">Copyright &copy; Hưng Hay Hát</div>
                     <div>
-                        <a href="https://hoidanit.vn/" target="_blank">Website</a>
+                        <a href="https://github.com/hunghayhat/Java-Spring-MVC" target="_blank">Github</a>
                         &middot;
-                        <a href="https://www.youtube.com/@hoidanit" target="_blank">Youtube channel</a>
+                        <a href="https://www.facebook.com/nthung.1719" target="_blank">Facebook</a>
                     </div>
                 </div>
             </div>

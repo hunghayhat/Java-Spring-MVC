@@ -14,6 +14,28 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+                    crossorigin="anonymous"></script>
+
+                <script>
+                    $(document).ready(() => {
+
+                        const productFile = $("#productFile");
+                        const orgImage = "${currentProduct.image}";
+                        if (orgImage) {
+                            const urlImage = "/images/product/" + orgImage;
+                            $("#productPreview").attr("src", urlImage);
+                            $("#productPreview").css({ "display": "block" });
+                        }
+                        productFile.change(function (e) {
+                            const imgURL = URL.createObjectURL(e.target.files[0]);
+                            $("#productPreview").attr("src", imgURL);
+                            $("#productPreview").css({ "display": "block" });
+                        });
+                    });
+                </script>
+
+
             </head>
 
             <body class="sb-nav-fixed">
@@ -54,9 +76,8 @@
                                             <div class="mb-3 mt-3">
                                                 <label class="form-label">Detail description</label>
                                                 <div class="form-floating">
-                                                    <textarea class="form-control" type="input"
-                                                        path="detailDesc"></textarea>
-                                                    <label for="floatingTextarea2"></label>
+                                                    <form:textarea class="form-control" type="input"
+                                                        path="detailDesc" />
                                                 </div>
                                             </div>
                                             <div class="row g-3 mt-3 mb-3">
@@ -92,9 +113,14 @@
                                                     </form:select>
                                                 </div>
                                             </div>
+                                            <div style="display: none" class="mb-3">
+                                                <label class="form-label">ID</label>
+                                                <form:input type="text" class="form-control" path="id" />
+                                            </div>
 
                                             <div class="col">
                                                 <label for="productFile" class="form-label">Image</label>
+
                                                 <input class="form-control" type="file" id="productFile"
                                                     accept=".png, .jpg, .jpeg" name="userFile" />
                                             </div>
@@ -111,26 +137,6 @@
                         <jsp:include page="../layout/footer.jsp" />
                     </div>
                 </div>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-                    crossorigin="anonymous"></script>
-
-                <script>
-                    $(document).ready(() => {
-
-                        const productFile = $("#productFile");
-                        const orgImage = "${newProduct.image}";
-                        if (orgImage) {
-                            const urlImage = "/images/product/" + orgImage;
-                            $("#productPreview").attr("src", urlImage);
-                            $("#productPreview").css({ "display": "block" });
-                        }
-                        productFile.change(function (e) {
-                            const imgURL = URL.createObjectURL(e.target.files[0]);
-                            $("#avatarPreview").attr("src", imgURL);
-                            $("#avatarPreview").css({ "display": "block" });
-                        });
-                    });
-                </script>
 
 
 

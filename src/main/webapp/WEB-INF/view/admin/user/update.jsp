@@ -70,6 +70,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="avatarFile" class="form-label">Avatar</label>
+                                        
                                                 <form:input type="text" class="form-control mb-3" path="avatar"
                                                     disabled="true" />
                                                 <input class="form-control" type="file" id="avatarFile"
