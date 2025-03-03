@@ -37,7 +37,7 @@
                         <div class="footer-item">
                             <h4 class="text-light mb-3">Contact</h4>
                             <p>Author: Hưng Hay Hát</p>
-                            <p>Github: <a href="https://github.com/hunghayhat" target="_blank"></a></p>
+                            <p>Github: Hưng Hay Hát <a href="https://github.com/hunghayhat" target="_blank"></a></p>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        <span class="text-light"><a href="https://hoidanit.vn" target="_blank"><i
+                        <span class="text-light"><a href="https://github.com/hunghayhat" target="_blank"><i
                                     class="fas fa-copyright text-light me-2"></i>Hưng Hay Hát</a>, All right
                             reserved.</span>
                     </div>
