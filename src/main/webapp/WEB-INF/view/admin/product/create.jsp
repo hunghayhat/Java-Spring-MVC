@@ -65,9 +65,8 @@
                                             <div class="mb-3 mt-3">
                                                 <label class="form-label">Detail description</label>
                                                 <div class="form-floating">
-                                                    <textarea class="form-control" type="input"
-                                                        path="detailDesc"></textarea>
-                                                    <label for="floatingTextarea2"></label>
+                                                    <form:textarea class="form-control" type="input"
+                                                        path="detailDesc" />
                                                 </div>
                                             </div>
                                             <div class="row g-3 mt-3 mb-3">
