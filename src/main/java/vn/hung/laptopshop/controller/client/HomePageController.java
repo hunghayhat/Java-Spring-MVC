@@ -6,20 +6,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
 import vn.hung.laptopshop.domain.Product;
 import vn.hung.laptopshop.domain.User;
 import vn.hung.laptopshop.domain.dto.RegisterDTO;
 import vn.hung.laptopshop.service.ProductService;
 import vn.hung.laptopshop.service.UserService;
-
 import org.springframework.web.bind.annotation.PostMapping;
-
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class HomePageController {
