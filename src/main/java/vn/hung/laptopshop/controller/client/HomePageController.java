@@ -19,6 +19,7 @@ import vn.hung.laptopshop.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class HomePageController {
@@ -62,6 +63,13 @@ public class HomePageController {
     @GetMapping("/login")
     public String getLoginPage(Model model) {
         return "client/auth/login";
+    }
+
+    @PostMapping("/login")
+    public String postLoginPage(Model model) {
+        // TODO: process POST request
+
+        return "";
     }
 
 }

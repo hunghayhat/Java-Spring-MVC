@@ -74,15 +74,15 @@
                                                                     class="form-control ${not empty errorPassword ? 'is-invalid' : ''}"
                                                                     path="confirmPassword" type="password"
                                                                     placeholder="Confirm password" />
-                                                                <label for="inputPasswordConfirm">Confirm
-                                                                    Password</label>
+                                                                <label for="inputPasswordConfirm">
+                                                                    Confirm Password</label>
                                                                 ${errorPassword}
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="mt-4 mb-0">
                                                         <div class="d-grid">
-                                                            <button class="btn btn-primary btn-block">
+                                                            <button class="btn btn-success btn-block">
                                                                 Create Account
                                                             </button>
                                                         </div>
@@ -90,7 +90,7 @@
                                                 </form:form>
                                             </div>
                                             <div class="card-footer text-center py-3">
-                                                <div class="small"><a href="login.html">Have an account? Go to login</a>
+                                                <div class="small"><a href="/login">Have an account? Go to login</a>
                                                 </div>
                                             </div>
                                         </div>
