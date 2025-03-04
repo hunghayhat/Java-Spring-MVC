@@ -38,7 +38,7 @@ public class UserService {
         return this.userRepository.findById(id);
     }
 
-    public void deleteById (long id) {
+    public void deleteById(long id) {
         this.userRepository.deleteById(id);
     }
 
@@ -46,11 +46,15 @@ public class UserService {
         return this.roleRepository.findByName(name);
     }
 
-    public User registerUserDTOtoUser (RegisterDTO registerDTO) {
+    public User registerUserDTOtoUser(RegisterDTO registerDTO) {
         User user = new User();
-        user.setFullName(registerDTO.getFirstName()+ " " + registerDTO.getLastName());
+        user.setFullName(registerDTO.getFirstName() + " " + registerDTO.getLastName());
         user.setEmail(registerDTO.getEmail());
         user.setPassword(registerDTO.getPassword());
         return user;
+    }
+
+    public boolean checkExistedEmail(String email) {
+        return this.userRepository.existsByEmail(email);
     }
 }

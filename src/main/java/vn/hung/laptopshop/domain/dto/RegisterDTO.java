@@ -1,5 +1,8 @@
 package vn.hung.laptopshop.domain.dto;
 
+import vn.hung.laptopshop.service.validator.RegisterChecked;
+
+@RegisterChecked
 public class RegisterDTO {
     private String firstName;
     private String lastName;

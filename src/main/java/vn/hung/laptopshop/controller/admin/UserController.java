@@ -1,4 +1,5 @@
 package vn.hung.laptopshop.controller.admin;
+
 import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -65,11 +66,6 @@ public class UserController {
             @ModelAttribute("newUser") @Valid User hung,
             BindingResult newUserBindingResult,
             @RequestParam("userFile") MultipartFile file) {
-
-        List<FieldError> errors = newUserBindingResult.getFieldErrors();
-        for (FieldError error : errors) {
-            System.out.println(error.getField() + " - " + error.getDefaultMessage());
-        }
 
         if (newUserBindingResult.hasErrors()) {
             return "admin/user/create";
