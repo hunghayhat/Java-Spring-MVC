@@ -67,7 +67,6 @@ public class HomePageController {
 
     @PostMapping("/login")
     public String postLoginPage(Model model) {
-        // TODO: process POST request
 
         return "";
     }
