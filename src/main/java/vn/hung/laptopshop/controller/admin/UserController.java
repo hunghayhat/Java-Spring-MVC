@@ -104,7 +104,7 @@ public class UserController {
     public String getDeleteUser(Model model, @PathVariable long id) {
         User currentUser = this.userService.findById(id);
         model.addAttribute("newUser", currentUser);
-        return "/admin/user/delete";
+        return "admin/user/delete";
     }
 
     @PostMapping("/admin/user/delete")

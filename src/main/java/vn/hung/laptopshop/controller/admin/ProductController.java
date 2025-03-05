@@ -34,7 +34,7 @@ public class ProductController {
     public String getProductDashboard(Model model) {
         List<Product> products = this.productService.getAllProducts();
         model.addAttribute("newProducts", products);
-        return "/admin/product/show";
+        return "admin/product/show";
     }
 
     @GetMapping("/admin/product/create")
@@ -67,14 +67,14 @@ public class ProductController {
         model.addAttribute("id", id);
         Product product = this.productService.findProductById(id);
         model.addAttribute("product", product);
-        return "/admin/product/detail";
+        return "admin/product/detail";
     }
 
     @GetMapping("/admin/product/update/{id}")
     public String getUpdateProduct(Model model, @PathVariable long id) {
         Product currentProduct = this.productService.findProductById(id);
         model.addAttribute("currentProduct", currentProduct);
-        return "/admin/product/update";
+        return "admin/product/update";
     }
 
     @PostMapping("/admin/product/update")
