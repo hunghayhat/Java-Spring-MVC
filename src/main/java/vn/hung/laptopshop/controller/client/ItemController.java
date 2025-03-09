@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
+
 @Controller
 public class ItemController {
     private final ProductService productService;
@@ -33,9 +34,15 @@ public class ItemController {
         long productId = id;
         String email = (String) session.getAttribute("email");
 
-        this.productService.handleAddProductToCart(email, productId);
+        this.productService.handleAddProductToCart(email, productId, session);
 
         return "redirect:/";
     }
+
+    @GetMapping("/cart")
+    public String getCart() {
+        return "client/cart/show";
+    }
+    
 
 }

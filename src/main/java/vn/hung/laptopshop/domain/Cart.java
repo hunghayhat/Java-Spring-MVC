@@ -58,5 +58,6 @@ public class Cart {
     public void setCartDetails(List<CartDetail> cartDetails) {
         this.cartDetails = cartDetails;
     }
+    
 
 }
