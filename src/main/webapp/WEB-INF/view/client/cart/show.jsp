@@ -75,11 +75,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <c:set var="totalPrice" value="0" />
                                                 <c:forEach var="cartDetail" items="${cartDetails}">
                                                     <tr>
                                                         <th scope="row">
                                                             <div class="d-flex align-items-center">
-                                                                <img src="/images/product/${cartDetail.getProduct().getImage()}"
+                                                                <img src="/images/product/${cartDetail.product.image}"
                                                                     class="img-fluid me-5 rounded-circle"
                                                                     style="width: 80px; height: 80px;" alt="">
                                                             </div>
@@ -87,7 +88,7 @@
                                                         <td>
                                                             <p class="mb-0 mt-4">
                                                                 <a
-                                                                    href="/product/{id}">${cartDetail.getProduct().getName()}</a>
+                                                                    href="/product/${cartDetail.product.id}">${cartDetail.product.name}</a>
                                                             </p>
                                                         </td>
                                                         <td>
@@ -130,6 +131,8 @@
                                                             </button>
                                                         </td>
                                                     </tr>
+                                                    <c:set var="totalPrice"
+                                                        value="${totalPrice + cartDetail.price * cartDetail.quantity}" />
                                                 </c:forEach>
 
                                             </tbody>
@@ -144,7 +147,9 @@
                                                     </h1>
                                                     <div class="d-flex justify-content-between mb-4">
                                                         <h5 class="mb-0 me-4">Subtotal:</h5>
-                                                        <p class="mb-0">$96.00</p>
+                                                        <p class="mb-0">
+                                                            <fmt:formatNumber type="number" value="${totalPrice}" /> đ
+                                                        </p>
                                                     </div>
                                                     <div class="d-flex justify-content-between">
                                                         <h5 class="mb-0 me-4">Shipping</h5>
