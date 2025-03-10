@@ -1,10 +1,13 @@
 package vn.hung.laptopshop.controller.client;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import vn.hung.laptopshop.domain.CartDetail;
 import vn.hung.laptopshop.domain.Product;
 import vn.hung.laptopshop.service.ProductService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +43,9 @@ public class ItemController {
     }
 
     @GetMapping("/cart")
-    public String getCart() {
+    public String getCart(Model model) {
+        List<CartDetail> cartDetails = this.productService.getAllCartItems();
+        model.addAttribute("cartDetails", cartDetails);
         return "client/cart/show";
     }
     

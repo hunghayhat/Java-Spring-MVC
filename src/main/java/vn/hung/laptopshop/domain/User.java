@@ -135,4 +135,8 @@ public class User {
                 + orders + ", cart=" + cart + "]";
     }
 
+    public User() {
+        this.cart = new Cart(); // Khởi tạo Cart mặc định
+    }
+
 }

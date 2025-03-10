@@ -1,8 +1,6 @@
 package vn.hung.laptopshop.service;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
@@ -82,6 +80,10 @@ public class ProductService {
             }
 
         }
+    }
+
+    public List<CartDetail> getAllCartItems() {
+        return this.cartDetailRepository.findAll();
     }
 
 }

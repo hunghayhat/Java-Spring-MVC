@@ -24,12 +24,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
+    public void configureViewResolvers(@SuppressWarnings("null") ViewResolverRegistry registry) {
         registry.viewResolver(viewResolver());
     }
 
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(@SuppressWarnings("null") ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/");
         registry.addResourceHandler("/js/**").addResourceLocations("/resources/js/");
         registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");

@@ -9,10 +9,12 @@ import vn.hung.laptopshop.domain.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+    @SuppressWarnings({ "null", "unchecked" })
     User save(User hung);
 
     List<User> findByEmail(String email);
 
+    @SuppressWarnings("null")
     List<User> findAll();
 
     User findById(long id);

@@ -9,8 +9,10 @@ import vn.hung.laptopshop.domain.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
+    @SuppressWarnings({ "null", "unchecked" })
     Product save(Product product);
 
+    @SuppressWarnings("null")
     List<Product> findAll();
 
     Product findById(long id);
