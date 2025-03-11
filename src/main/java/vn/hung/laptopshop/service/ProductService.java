@@ -86,4 +86,8 @@ public class ProductService {
         return this.cartDetailRepository.findAll();
     }
 
+    public void handleDeleteCartDetail(long id){
+        this.cartDetailRepository.deleteById(id);
+    }
+
 }
