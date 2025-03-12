@@ -11,4 +11,5 @@ import vn.hung.laptopshop.domain.User;
 public interface CartRepository extends JpaRepository<Cart, Long> {
     Cart findCartByUser(User user);
     
+    
 } 
