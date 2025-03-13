@@ -154,6 +154,11 @@
         const input = button.parent().parent().find('input');
         input.val(newVal); // Cập nhật giá trị mới vào ô input
 
+        //set form index
+        const index = input.attr("data-cart-detail-index");
+        const el = document.getElementById(`cartDetails${index}.quantity`);
+        $(el).val(newVal);
+
         // Lấy giá của sản phẩm và ID
         const price = input.attr("data-cart-detail-price");
         const id = input.attr("data-cart-detail-id");
@@ -164,6 +169,8 @@
             const newPrice = +price * newVal;
             priceElement.text(formatCurrency(newPrice.toFixed(2)) + " đ");
         }
+
+
 
         // Cập nhật tổng giỏ hàng
         const totalPriceElement = $(`p[data-cart-total-price]`);
