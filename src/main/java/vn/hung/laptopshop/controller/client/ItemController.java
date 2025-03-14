@@ -89,8 +89,12 @@ public class ItemController {
         return "client/cart/checkout";
     }
 
-    @PostMapping("/place-order") 
-    public String postOrderPage(Model model){
+    @PostMapping("/place-order")
+    public String postOrderPage(HttpServletRequest request,
+            @RequestParam("receiverName") String receiverName,
+            @RequestParam("receiverAddress") String receiverAddress,
+            @RequestParam("receiverPhone") String receiverPhone) {
+        HttpSession session = request.getSession(false);
         return "";
     }
 

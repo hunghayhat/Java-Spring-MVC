@@ -76,7 +76,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <c:if test="${ empty cartDetails}">
+                                                    <c:if test="${empty cartDetails}">
                                                         <tr>
                                                             <td colspan="6">
                                                                 Không có sản phẩm trong giỏ hàng
@@ -135,14 +135,35 @@
                                             </table>
                                         </div>
                                         <c:if test="${not empty cartDetails}">
-                                            <form:form action="/place-order" method="post" modelAttribute="cart" modelAttribute="order">
+                                            <form:form action="/place-order" method="post" modelAttribute="cart">
                                                 <div class="mt-5 row g-4 justify-content-start">
-                                                    <div class="display-6 mb-4">
-                                                        <h5>Thông tin người nhận</h5>
+                                                    <div class="col-12 col-md-6">
+                                                        <div class="p-4">
+                                                            <h5>Thông tin người nhận</h5>
+                                                            <div class="row">
+                                                                <div class="col-12 form-group mb-3">
+                                                                    <label>Tên người nhận</label>
+                                                                    <input class="form-control" name="receiverName"
+                                                                        required />
+                                                                </div>
+                                                                <div class="col-12 form-group mb-3">
+                                                                    <label>Địa chỉ người nhận</label>
+                                                                    <input class="form-control" name="receiverAddress"
+                                                                        required />
+                                                                </div>
+                                                                <div class="col-12 form-group mb-3">
+                                                                    <label>Số điện thoại</label>
+                                                                    <input class="form-control" name="receiverPhone"
+                                                                        required />
+                                                                </div>
+                                                                <div class="mt-4">
+                                                                    <i class="fas fa-arrow-left"></i>
+                                                                    <a href="/cart">Quay lại giỏ hàng</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="mt-5 row g-4 justify-content-end">
-                                                    <div class="col-12 col-md-8">
+                                                    <div class="col-12 col-md-6">
                                                         <div class="bg-light rounded">
                                                             <div class="p-4">
                                                                 <h1 class="display-6 mb-4"><span class="fw-normal">
@@ -186,14 +207,12 @@
                                                                     đ
                                                                 </p>
                                                             </div>
-                                                            <input type="hidden" name="${_csrf.parameterName}"
-                                                                value="${_csrf.token}" />
-                                                            <div>
 
-                                                            </div>
+
                                                             <button
                                                                 class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
                                                                 type="submit">Xác nhận thanh toán</button>
+                                                        </div>
                                             </form:form>
 
                                     </div>
