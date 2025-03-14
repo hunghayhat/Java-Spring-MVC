@@ -76,8 +76,22 @@ public class ItemController {
     }
 
     @GetMapping("checkout")
-    public String getCheckoutPage() {
+    public String getCheckoutPage(Model model, HttpServletRequest request) {
+        User currentUser = new User();
+        HttpSession session = request.getSession(false);
+        long id = (long) session.getAttribute("id");
+        currentUser.setId(id);
+
+        List<CartDetail> cartDetails = this.productService.getAllCartItems();
+        Cart cart = this.productService.findCartByUser(currentUser);
+        model.addAttribute("cartDetails", cartDetails);
+        model.addAttribute("cart", cart);
         return "client/cart/checkout";
+    }
+
+    @PostMapping("/place-order") 
+    public String postOrderPage(Model model){
+        return "";
     }
 
 }
