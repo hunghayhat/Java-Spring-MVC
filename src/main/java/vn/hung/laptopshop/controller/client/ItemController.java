@@ -94,8 +94,17 @@ public class ItemController {
             @RequestParam("receiverName") String receiverName,
             @RequestParam("receiverAddress") String receiverAddress,
             @RequestParam("receiverPhone") String receiverPhone) {
+        User currentUser = new User();
         HttpSession session = request.getSession(false);
-        return "";
+        long id = (long) session.getAttribute("id");
+        currentUser.setId(id);
+        this.productService.handlePlaceOrder(currentUser, session, receiverName, receiverAddress, receiverPhone);
+        return "redirect:order-finish";
+    }
+
+    @GetMapping("/order-finish")
+    public String finishOrderPage() {
+        return "client/cart/finish";
     }
 
 }

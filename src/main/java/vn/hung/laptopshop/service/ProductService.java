@@ -1,30 +1,47 @@
 package vn.hung.laptopshop.service;
 
 import java.util.List;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
 import vn.hung.laptopshop.domain.Cart;
 import vn.hung.laptopshop.domain.CartDetail;
+import vn.hung.laptopshop.domain.Order;
+import vn.hung.laptopshop.domain.OrderDetail;
 import vn.hung.laptopshop.domain.Product;
 import vn.hung.laptopshop.domain.User;
 import vn.hung.laptopshop.repository.CartDetailRepository;
 import vn.hung.laptopshop.repository.CartRepository;
+import vn.hung.laptopshop.repository.OrderDetailRepository;
+import vn.hung.laptopshop.repository.OrderRepository;
 import vn.hung.laptopshop.repository.ProductRepository;
 
 @Service
 public class ProductService {
+
+    private final CustomUserDetailsService customUserDetailsService;
+
+    private final AuthenticationSuccessHandler customSuccessHandler;
     private final ProductRepository productRepository;
     private final CartRepository cartRepository;
     private final CartDetailRepository cartDetailRepository;
     private final UserService userService;
+    private final OrderRepository orderRepository;
+    private final OrderDetailRepository orderDetailRepository;
 
     public ProductService(ProductRepository productRepository, CartRepository cartRepository,
-            CartDetailRepository cartDetailRepository, UserService userService) {
+            CartDetailRepository cartDetailRepository, UserService userService,
+            AuthenticationSuccessHandler customSuccessHandler, OrderDetailRepository orderDetailRepository,
+            OrderRepository orderRepository, CustomUserDetailsService customUserDetailsService) {
         this.productRepository = productRepository;
         this.cartDetailRepository = cartDetailRepository;
         this.cartRepository = cartRepository;
         this.userService = userService;
+        this.customSuccessHandler = customSuccessHandler;
+        this.orderDetailRepository = orderDetailRepository;
+        this.orderRepository = orderRepository;
+        this.customUserDetailsService = customUserDetailsService;
     }
 
     public List<Product> getAllProducts() {
@@ -109,6 +126,37 @@ public class ProductService {
             CartDetail selectedItem = this.cartDetailRepository.findById(cartDetail.getId());
             selectedItem.setQuantity(cartDetail.getQuantity());
             this.cartDetailRepository.save(selectedItem);
+        }
+    }
+
+    public void handlePlaceOrder(User user, HttpSession session, String receiverName, String receiverAddress,
+            String receiverPhone) {
+        Order order = new Order();
+        order.setUser(user);
+        order.setReceiverName(receiverName);
+        order.setReceiverAddress(receiverAddress);
+        order.setReceiverPhone(receiverPhone);
+        order = this.orderRepository.save(order);
+
+        Cart cart = this.cartRepository.findCartByUser(user);
+        if (cart != null) {
+            List<CartDetail> cartDetails = cart.getCartDetails();
+            if (cartDetails != null) {
+                for (CartDetail cartDetail : cartDetails) {
+                    OrderDetail orderDetail = new OrderDetail();
+                    orderDetail.setOrder(order);
+                    orderDetail.setProduct(cartDetail.getProduct());
+                    orderDetail.setPrice(cartDetail.getPrice());
+                    orderDetail.setQuantity(cartDetail.getQuantity());
+                    this.orderDetailRepository.save(orderDetail);
+                }
+
+                for (CartDetail cartDetail : cartDetails) {
+                    this.cartDetailRepository.deleteById(cartDetail.getId());
+                }
+                this.cartRepository.deleteById(cart.getId());
+                session.setAttribute("sum", 0);
+            }
         }
     }
 
