@@ -21,7 +21,6 @@ import vn.hung.laptopshop.repository.ProductRepository;
 public class ProductService {
 
     private final CustomUserDetailsService customUserDetailsService;
-
     private final AuthenticationSuccessHandler customSuccessHandler;
     private final ProductRepository productRepository;
     private final CartRepository cartRepository;
@@ -131,16 +130,23 @@ public class ProductService {
 
     public void handlePlaceOrder(User user, HttpSession session, String receiverName, String receiverAddress,
             String receiverPhone) {
-        Order order = new Order();
-        order.setUser(user);
-        order.setReceiverName(receiverName);
-        order.setReceiverAddress(receiverAddress);
-        order.setReceiverPhone(receiverPhone);
-        order = this.orderRepository.save(order);
 
         Cart cart = this.cartRepository.findCartByUser(user);
+        List<CartDetail> cartDetails = cart.getCartDetails();
         if (cart != null) {
-            List<CartDetail> cartDetails = cart.getCartDetails();
+            Order order = new Order();
+            order.setUser(user);
+            order.setReceiverName(receiverName);
+            order.setReceiverAddress(receiverAddress);
+            order.setReceiverPhone(receiverPhone);
+            double totalPrice = 0;
+            for (CartDetail cartDetail : cartDetails) {
+                totalPrice += cartDetail.getPrice() * cartDetail.getQuantity();
+            }
+            order.setTotalPrice(totalPrice);
+            order.setStatus("PENDING");
+            order = this.orderRepository.save(order);
+
             if (cartDetails != null) {
                 for (CartDetail cartDetail : cartDetails) {
                     OrderDetail orderDetail = new OrderDetail();
@@ -150,7 +156,6 @@ public class ProductService {
                     orderDetail.setQuantity(cartDetail.getQuantity());
                     this.orderDetailRepository.save(orderDetail);
                 }
-
                 for (CartDetail cartDetail : cartDetails) {
                     this.cartDetailRepository.deleteById(cartDetail.getId());
                 }

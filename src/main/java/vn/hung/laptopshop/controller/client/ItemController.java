@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class ItemController {
@@ -106,5 +105,5 @@ public class ItemController {
     public String finishOrderPage() {
         return "client/cart/finish";
     }
-
+    
 }
