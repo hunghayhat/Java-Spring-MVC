@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ItemController {
@@ -88,18 +87,7 @@ public class ItemController {
         return "client/cart/checkout";
     }
 
-    @PostMapping("/place-order")
-    public String postOrderPage(HttpServletRequest request,
-            @RequestParam("receiverName") String receiverName,
-            @RequestParam("receiverAddress") String receiverAddress,
-            @RequestParam("receiverPhone") String receiverPhone) {
-        User currentUser = new User();
-        HttpSession session = request.getSession(false);
-        long id = (long) session.getAttribute("id");
-        currentUser.setId(id);
-        this.productService.handlePlaceOrder(currentUser, session, receiverName, receiverAddress, receiverPhone);
-        return "redirect:order-finish";
-    }
+    
 
     @GetMapping("/order-finish")
     public String finishOrderPage() {
