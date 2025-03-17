@@ -1,9 +1,12 @@
 package vn.hung.laptopshop.service;
 
 import java.util.List;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Service;
-
+import vn.hung.laptopshop.controller.admin.DashboardController;
+import vn.hung.laptopshop.controller.client.HomePageController;
 import jakarta.servlet.http.HttpSession;
 import vn.hung.laptopshop.domain.Cart;
 import vn.hung.laptopshop.domain.CartDetail;
@@ -20,6 +23,10 @@ import vn.hung.laptopshop.repository.ProductRepository;
 @Service
 public class ProductService {
 
+    private final DashboardController dashboardController;
+
+    private final DaoAuthenticationProvider daoAuthenticationProvider;
+
     private final CustomUserDetailsService customUserDetailsService;
     private final AuthenticationSuccessHandler customSuccessHandler;
     private final ProductRepository productRepository;
@@ -32,7 +39,8 @@ public class ProductService {
     public ProductService(ProductRepository productRepository, CartRepository cartRepository,
             CartDetailRepository cartDetailRepository, UserService userService,
             AuthenticationSuccessHandler customSuccessHandler, OrderDetailRepository orderDetailRepository,
-            OrderRepository orderRepository, CustomUserDetailsService customUserDetailsService) {
+            OrderRepository orderRepository, CustomUserDetailsService customUserDetailsService,
+            DaoAuthenticationProvider daoAuthenticationProvider, DashboardController dashboardController) {
         this.productRepository = productRepository;
         this.cartDetailRepository = cartDetailRepository;
         this.cartRepository = cartRepository;
@@ -41,6 +49,8 @@ public class ProductService {
         this.orderDetailRepository = orderDetailRepository;
         this.orderRepository = orderRepository;
         this.customUserDetailsService = customUserDetailsService;
+        this.daoAuthenticationProvider = daoAuthenticationProvider;
+        this.dashboardController = dashboardController;
     }
 
     public List<Product> getAllProducts() {
@@ -164,5 +174,26 @@ public class ProductService {
             }
         }
     }
+
+    public List<Order> findAllOrders() {
+        return this.orderRepository.findAll();
+    }
+
+    public Order findOrderById(long id) {
+        return this.orderRepository.findById(id);
+    }
+
+    public List<OrderDetail> findDetailsByOrder(Order order) {
+        return this.orderDetailRepository.findDetailsByOrder(order);
+    }
+
+    public void handleUpdateOrder(Order order) {
+        this.orderRepository.save(order);
+    }
+
+    public void handleDeleteOrder(Order order) {
+        this.orderRepository.deleteById(order.getId());
+    }
+
 
 }
