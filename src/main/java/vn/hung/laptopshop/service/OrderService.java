@@ -88,5 +88,7 @@ public class OrderService {
     public void handleDeleteOrder(Order order) {
         this.orderRepository.deleteById(order.getId());
     }
-
+    public long orderCount(){
+        return this.orderRepository.count();
+    }
 }

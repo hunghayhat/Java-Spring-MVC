@@ -16,7 +16,6 @@ import vn.hung.laptopshop.repository.ProductRepository;
 @Service
 public class ProductService {
 
-
     private final ProductRepository productRepository;
     private final CartRepository cartRepository;
     private final CartDetailRepository cartDetailRepository;
@@ -24,13 +23,13 @@ public class ProductService {
 
     public ProductService(ProductRepository productRepository, CartRepository cartRepository,
             CartDetailRepository cartDetailRepository, UserService userService,
-            AuthenticationSuccessHandler customSuccessHandler,  CustomUserDetailsService customUserDetailsService,
-            DaoAuthenticationProvider daoAuthenticationProvider ) {
+            AuthenticationSuccessHandler customSuccessHandler, CustomUserDetailsService customUserDetailsService,
+            DaoAuthenticationProvider daoAuthenticationProvider) {
         this.productRepository = productRepository;
         this.cartDetailRepository = cartDetailRepository;
         this.cartRepository = cartRepository;
         this.userService = userService;
-       
+
     }
 
     public List<Product> getAllProducts() {
@@ -118,8 +117,8 @@ public class ProductService {
         }
     }
 
-    
-    
-
+    public long productCount() {
+        return this.productRepository.count();
+    }
 
 }
