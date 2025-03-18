@@ -26,7 +26,6 @@ import jakarta.validation.Valid;
 @Controller
 public class HomePageController {
 
-    private final CartDetailRepository cartDetailRepository;
     private final UserService userService;
     private final ProductService productService;
     private final PasswordEncoder passwordEncoder;
@@ -37,7 +36,6 @@ public class HomePageController {
         this.productService = productService;
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
-        this.cartDetailRepository = cartDetailRepository;
         this.orderService = orderService;
     }
 
