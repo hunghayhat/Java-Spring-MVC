@@ -1,6 +1,9 @@
 package vn.hung.laptopshop.service;
 
 import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Service;
@@ -32,8 +35,8 @@ public class ProductService {
 
     }
 
-    public List<Product> getAllProducts() {
-        return this.productRepository.findAll();
+    public Page<Product> getAllProducts(Pageable page) {
+        return this.productRepository.findAll(page);
     }
 
     public Product handleSaveProduct(Product product) {
