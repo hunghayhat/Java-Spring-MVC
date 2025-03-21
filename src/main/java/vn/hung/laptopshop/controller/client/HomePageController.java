@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class HomePageController {
@@ -98,5 +100,11 @@ public class HomePageController {
         model.addAttribute("orders", orders);
         return "client/order/order-history";
     }
+
+    @GetMapping("/products")
+    public String getProductsPage() {
+        return "client/homepage/product";
+    }
+    
 
 }
