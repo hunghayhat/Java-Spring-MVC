@@ -1,14 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-            <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+        <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+            <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
                 <!DOCTYPE html>
                 <html lang="en">
 
                 <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Trang chủ - Laptopshop</title>
+                    <meta charset="utf-8">
+                    <title> Sản Phẩm - Laptopshop</title>
+                    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+                    <meta content="" name="keywords">
+                    <meta content="" name="description">
 
                     <!-- Google Web Fonts -->
                     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,11 +35,9 @@
 
                     <!-- Template Stylesheet -->
                     <link href="/client/css/style.css" rel="stylesheet">
-
                 </head>
 
                 <body>
-
 
                     <!-- Spinner Start -->
                     <div id="spinner"
@@ -47,246 +48,220 @@
 
                     <jsp:include page="../layout/header.jsp" />
 
-                    <jsp:include page="../layout/banner.jsp" />
-
-                    <jsp:include page="../layout/feature.jsp" />
-
-                    <!-- Fruits Shop Start-->
-                    <div class="container-fluid fruite py-5">
+                    <!-- Single Product Start -->
+                    <div class="container-fluid py-5 mt-5">
                         <div class="container py-5">
-                            <h1 class="mb-4">Fresh fruits shop</h1>
-                            <div class="row g-4">
-                                <div class="col-lg-12">
-                                    <div class="row g-4">
-                                        <div class="col-xl-3">
-                                            <div class="input-group w-100 mx-auto d-flex">
-                                                <input type="search" class="form-control p-3" placeholder="keywords"
-                                                    aria-describedby="search-icon-1">
-                                                <span id="search-icon-1" class="input-group-text p-3"><i
-                                                        class="fa fa-search"></i></span>
+                            <div class="row g-4 mb-5">
+                                <div>
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Danh Sách Sản Phẩm
+                                            </li>
+                                        </ol>
+                                    </nav>
+                                </div>
+
+                                <div class="row g-4 fruite">
+                                    <div class="col-12 col-md-4">
+                                        <div class="row g-4">
+                                            <div class="col-12">
+                                                <div class="mb-2"><b>Hãng sản xuất</b></div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="factory-1"
+                                                        value="APPLE">
+                                                    <label class="form-check-label" for="factory-1">Apple</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="factory-2"
+                                                        value="ASUS">
+                                                    <label class="form-check-label" for="factory-2">Asus</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="factory-3"
+                                                        value="LENOVO">
+                                                    <label class="form-check-label" for="factory-3">Lenovo</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="factory-4"
+                                                        value="DELL">
+                                                    <label class="form-check-label" for="factory-4">Dell</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="factory-5"
+                                                        value="LG">
+                                                    <label class="form-check-label" for="factory-5">LG</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="factory-6"
+                                                        value="ACER">
+                                                    <label class="form-check-label" for="factory-6">Acer</label>
+                                                </div>
+
                                             </div>
-                                        </div>
-                                        <div class="col-6"></div>
-                                        <div class="col-xl-3">
-                                            <div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
-                                                <label for="fruits">Default Sorting:</label>
-                                                <select id="fruits" name="fruitlist"
-                                                    class="border-0 form-select-sm bg-light me-3" form="fruitform">
-                                                    <option value="volvo">Nothing</option>
-                                                    <option value="saab">Popularity</option>
-                                                    <option value="opel">Organic</option>
-                                                    <option value="audi">Fantastic</option>
-                                                </select>
+                                            <div class="col-12">
+                                                <div class="mb-2"><b>Mục đích sử dụng</b></div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="target-1"
+                                                        value="GAMING">
+                                                    <label class="form-check-label" for="target-1">Gaming</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="target-2"
+                                                        value="SINHVIEN-VANPHONG">
+                                                    <label class="form-check-label" for="target-2">Sinh viên - văn
+                                                        phòng</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="target-3"
+                                                        value="THIET-KE-DO-HOA">
+                                                    <label class="form-check-label" for="target-3">Thiết kế đồ
+                                                        họa</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="target-4"
+                                                        value="MONG-NHE">
+                                                    <label class="form-check-label" for="target-4">Mỏng nhẹ</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="target-5"
+                                                        value="DOANH-NHAN">
+                                                    <label class="form-check-label" for="target-5">Doanh nhân</label>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-2"><b>Mức giá</b></div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="price-2"
+                                                        value="duoi-10-trieu">
+                                                    <label class="form-check-label" for="price-2">Dưới 10 triệu</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="price-3"
+                                                        value="10-15-trieu">
+                                                    <label class="form-check-label" for="price-3">Từ 10 - 15
+                                                        triệu</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="price-4"
+                                                        value="15-20-trieu">
+                                                    <label class="form-check-label" for="price-4">Từ 15 - 20
+                                                        triệu</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="price-5"
+                                                        value="tren-20-triệu">
+                                                    <label class="form-check-label" for="price-5">Trên 20 triệu</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-2"><b>Sắp xếp</b></div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="sort-1"
+                                                        value="gia-tang-dan" name="radio-sort">
+                                                    <label class="form-check-label" for="sort-1">Giá tăng dần</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="sort-2"
+                                                        value="gia-giam-dan" name="radio-sort">
+                                                    <label class="form-check-label" for="sort-2">Giá giảm dần</label>
+                                                </div>
+
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="sort-3"
+                                                        value="gia-nothing" name="radio-sort">
+                                                    <label class="form-check-label" for="sort-3">Không sắp xếp</label>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-12">
+                                                <button
+                                                    class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4">
+                                                    Lọc Sản Phẩm
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row g-4">
-                                        <div class="col-lg-3">
-                                            <div class="row g-4">
-                                                <div class="col-lg-12">
-                                                    <div class="mb-3">
-                                                        <h4>Categories</h4>
-                                                        <ul class="list-unstyled fruite-categorie">
-                                                            <li>
-                                                                <div class="d-flex justify-content-between fruite-name">
-                                                                    <a href="#"><i
-                                                                            class="fas fa-apple-alt me-2"></i>Apples</a>
-                                                                    <span>(3)</span>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="d-flex justify-content-between fruite-name">
-                                                                    <a href="#"><i
-                                                                            class="fas fa-apple-alt me-2"></i>Oranges</a>
-                                                                    <span>(5)</span>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="d-flex justify-content-between fruite-name">
-                                                                    <a href="#"><i
-                                                                            class="fas fa-apple-alt me-2"></i>Strawbery</a>
-                                                                    <span>(2)</span>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="d-flex justify-content-between fruite-name">
-                                                                    <a href="#"><i
-                                                                            class="fas fa-apple-alt me-2"></i>Banana</a>
-                                                                    <span>(8)</span>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="d-flex justify-content-between fruite-name">
-                                                                    <a href="#"><i
-                                                                            class="fas fa-apple-alt me-2"></i>Pumpkin</a>
-                                                                    <span>(5)</span>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="mb-3">
-                                                        <h4 class="mb-2">Price</h4>
-                                                        <input type="range" class="form-range w-100" id="rangeInput"
-                                                            name="rangeInput" min="0" max="500" value="0"
-                                                            oninput="amount.value=rangeInput.value">
-                                                        <output id="amount" name="amount" min-velue="0" max-value="500"
-                                                            for="rangeInput">0</output>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="mb-3">
-                                                        <h4>Additional</h4>
-                                                        <div class="mb-2">
-                                                            <input type="radio" class="me-2" id="Categories-1"
-                                                                name="Categories-1" value="Beverages">
-                                                            <label for="Categories-1"> Organic</label>
-                                                        </div>
-                                                        <div class="mb-2">
-                                                            <input type="radio" class="me-2" id="Categories-2"
-                                                                name="Categories-1" value="Beverages">
-                                                            <label for="Categories-2"> Fresh</label>
-                                                        </div>
-                                                        <div class="mb-2">
-                                                            <input type="radio" class="me-2" id="Categories-3"
-                                                                name="Categories-1" value="Beverages">
-                                                            <label for="Categories-3"> Sales</label>
-                                                        </div>
-                                                        <div class="mb-2">
-                                                            <input type="radio" class="me-2" id="Categories-4"
-                                                                name="Categories-1" value="Beverages">
-                                                            <label for="Categories-4"> Discount</label>
-                                                        </div>
-                                                        <div class="mb-2">
-                                                            <input type="radio" class="me-2" id="Categories-5"
-                                                                name="Categories-1" value="Beverages">
-                                                            <label for="Categories-5"> Expired</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <h4 class="mb-3">Featured products</h4>
-                                                    <div class="d-flex align-items-center justify-content-start">
-                                                        <div class="rounded me-4" style="width: 100px; height: 100px;">
-                                                            <img src="img/featur-1.jpg" class="img-fluid rounded"
-                                                                alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6 class="mb-2">Big Banana</h6>
-                                                            <div class="d-flex mb-2">
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                                <i class="fa fa-star"></i>
-                                                            </div>
-                                                            <div class="d-flex mb-2">
-                                                                <h5 class="fw-bold me-2">2.99 $</h5>
-                                                                <h5 class="text-danger text-decoration-line-through">
-                                                                    4.11 $</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex align-items-center justify-content-start">
-                                                        <div class="rounded me-4" style="width: 100px; height: 100px;">
-                                                            <img src="img/featur-2.jpg" class="img-fluid rounded"
-                                                                alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6 class="mb-2">Big Banana</h6>
-                                                            <div class="d-flex mb-2">
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                                <i class="fa fa-star"></i>
-                                                            </div>
-                                                            <div class="d-flex mb-2">
-                                                                <h5 class="fw-bold me-2">2.99 $</h5>
-                                                                <h5 class="text-danger text-decoration-line-through">
-                                                                    4.11 $</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex align-items-center justify-content-start">
-                                                        <div class="rounded me-4" style="width: 100px; height: 100px;">
-                                                            <img src="img/featur-3.jpg" class="img-fluid rounded"
-                                                                alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6 class="mb-2">Big Banana</h6>
-                                                            <div class="d-flex mb-2">
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                                <i class="fa fa-star text-secondary"></i>
-                                                                <i class="fa fa-star"></i>
-                                                            </div>
-                                                            <div class="d-flex mb-2">
-                                                                <h5 class="fw-bold me-2">2.99 $</h5>
-                                                                <h5 class="text-danger text-decoration-line-through">
-                                                                    4.11 $</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="d-flex justify-content-center my-4">
-                                                        <a href="#"
-                                                            class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Vew
-                                                            More</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <div class="position-relative">
-                                                        <img src="img/banner-fruits.jpg" class="img-fluid w-100 rounded"
-                                                            alt="">
-                                                        <div class="position-absolute"
-                                                            style="top: 50%; right: 10px; transform: translateY(-50%);">
-                                                            <h3 class="text-secondary fw-bold">Fresh <br> Fruits <br>
-                                                                Banner</h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <div class="row g-4 justify-content-center">
-                                                <div class="col-md-6 col-lg-6 col-xl-4">
+                                    <div class="col-12 col-md-8 text-center">
+                                        <div class="row g-4">
+                                            <c:forEach var="product" items="${products}">
+                                                <div class="col-md-6 col-lg-4">
                                                     <div class="rounded position-relative fruite-item">
                                                         <div class="fruite-img">
-                                                            <img src="img/fruite-item-5.jpg"
+                                                            <img src="/images/product/${product.image}"
                                                                 class="img-fluid w-100 rounded-top" alt="">
                                                         </div>
                                                         <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                                            style="top: 10px; left: 10px;">Fruits</div>
+                                                            style="top: 10px; left: 10px;">Laptop
+                                                        </div>
                                                         <div
                                                             class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                            <h4>Grapes</h4>
-                                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit
-                                                                sed do eiusmod te incididunt</p>
-                                                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                                <a href="#"
-                                                                    class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                                                        class="fa fa-shopping-bag me-2 text-primary"></i>
-                                                                    Add to cart</a>
+                                                            <h4 style="font-size: 15px;">
+                                                                <a href="/product/${product.id}">
+                                                                    ${product.name}
+                                                                </a>
+
+                                                            </h4>
+                                                            <p style="font-size: 13px;">
+                                                                ${product.shortDesc}</p>
+                                                            <div
+                                                                class="d-flex  flex-lg-wrap justify-content-center flex-column">
+                                                                <p style="font-size: 15px; text-align: center; width: 100%;"
+                                                                    class="text-dark  fw-bold mb-3">
+                                                                    <fmt:formatNumber type="number"
+                                                                        value="${product.price}" />
+                                                                    đ
+                                                                </p>
+                                                                <form action="/add-product-to-cart/${product.id}"
+                                                                    method="post">
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                        value="${_csrf.token}" />
+
+                                                                    <button
+                                                                        class="mx-auto btn border border-secondary rounded-pill px-3 text-primary"><i
+                                                                            class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                                        Add to cart
+                                                                    </button>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </c:forEach>
 
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
                                             <div class="pagination d-flex justify-content-center mt-5">
-                                                <a href="#" class="rounded">&laquo;</a>
-                                                <a href="#" class="active rounded">1</a>
-                                                <a href="#" class="rounded">2</a>
-                                                <a href="#" class="rounded">3</a>
-                                                <a href="#" class="rounded">4</a>
-                                                <a href="#" class="rounded">5</a>
-                                                <a href="#" class="rounded">6</a>
-                                                <a href="#" class="rounded">&raquo;</a>
+                                                <li class="page-item">
+                                                    <a class="${1 eq currentPage ? 'disabled page-link' : 'page-link'}"
+                                                        href="/products?page=${currentPage - 1}" aria-label="Previous">
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                    </a>
+                                                </li>
+                                                <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
+                                                    <li class="page-item">
+                                                        <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'}"
+                                                            href="/products?page=${loop.index + 1}">
+                                                            ${loop.index + 1}
+                                                        </a>
+                                                    </li>
+                                                </c:forEach>
+                                                <li class="page-item">
+                                                    <a class="${totalPages eq currentPage ? 'disabled page-link' : 'page-link'}"
+                                                        href="/products?page=${currentPage + 1}" aria-label="Next">
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                    </a>
+                                                </li>
+
                                             </div>
                                         </div>
                                     </div>
@@ -294,114 +269,9 @@
                             </div>
                         </div>
                     </div>
-                    </div>
-                    </div>
-                    <!-- Fruits Shop End-->
+                    <!-- Single Product End -->
 
-
-                    <!-- Footer Start -->
-                    <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-                        <div class="container py-5">
-                            <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
-                                <div class="row g-4">
-                                    <div class="col-lg-3">
-                                        <a href="#">
-                                            <h1 class="text-primary mb-0">Fruitables</h1>
-                                            <p class="text-secondary mb-0">Fresh products</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="position-relative mx-auto">
-                                            <input class="form-control border-0 w-100 py-3 px-4 rounded-pill"
-                                                type="number" placeholder="Your Email">
-                                            <button type="submit"
-                                                class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white"
-                                                style="top: 0; right: 0;">Subscribe Now</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="d-flex justify-content-end pt-3">
-                                            <a class="btn  btn-outline-secondary me-2 btn-md-square rounded-circle"
-                                                href=""><i class="fab fa-twitter"></i></a>
-                                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle"
-                                                href=""><i class="fab fa-facebook-f"></i></a>
-                                            <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle"
-                                                href=""><i class="fab fa-youtube"></i></a>
-                                            <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row g-5">
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="footer-item">
-                                        <h4 class="text-light mb-3">Why People Like us!</h4>
-                                        <p class="mb-4">typesetting, remaining essentially unchanged. It was
-                                            popularised in the 1960s with the like Aldus PageMaker including of Lorem
-                                            Ipsum.</p>
-                                        <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Read
-                                            More</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="d-flex flex-column text-start footer-item">
-                                        <h4 class="text-light mb-3">Shop Info</h4>
-                                        <a class="btn-link" href="">About Us</a>
-                                        <a class="btn-link" href="">Contact Us</a>
-                                        <a class="btn-link" href="">Privacy Policy</a>
-                                        <a class="btn-link" href="">Terms & Condition</a>
-                                        <a class="btn-link" href="">Return Policy</a>
-                                        <a class="btn-link" href="">FAQs & Help</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="d-flex flex-column text-start footer-item">
-                                        <h4 class="text-light mb-3">Account</h4>
-                                        <a class="btn-link" href="">My Account</a>
-                                        <a class="btn-link" href="">Shop details</a>
-                                        <a class="btn-link" href="">Shopping Cart</a>
-                                        <a class="btn-link" href="">Wishlist</a>
-                                        <a class="btn-link" href="">Order History</a>
-                                        <a class="btn-link" href="">International Orders</a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6">
-                                    <div class="footer-item">
-                                        <h4 class="text-light mb-3">Contact</h4>
-                                        <p>Address: 1429 Netus Rd, NY 48247</p>
-                                        <p>Email: Example@gmail.com</p>
-                                        <p>Phone: +0123 4567 8910</p>
-                                        <p>Payment Accepted</p>
-                                        <img src="img/payment.png" class="img-fluid" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Footer End -->
-
-                    <!-- Copyright Start -->
-                    <div class="container-fluid copyright bg-dark py-4">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                                    <span class="text-light"><a href="#"><i
-                                                class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All
-                                        right reserved.</span>
-                                </div>
-                                <div class="col-md-6 my-auto text-center text-md-end text-white">
-                                    <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
-                                    <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
-                                    <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-                                    Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Copyright End -->
-
+                    <jsp:include page="../layout/footer.jsp" />
 
 
                     <!-- Back to Top -->
